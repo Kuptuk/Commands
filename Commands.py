@@ -1,5 +1,6 @@
 import telebot
 import pymongo
+import os
 
 mm = os.environ.get("Mongo")
 tt = os.environ.get("TOKEN")
