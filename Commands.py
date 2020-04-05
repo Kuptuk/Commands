@@ -27,5 +27,10 @@ def streamcraft_message(message):
 def gmail_message(message):
     if message.from_user.id == 522487188:
         my_collection.update_one({"gmail":"false"},{"$set":{"gmail":"true"}})
+        
+@bot.message_handler(commands=["weather"])
+def weather_message(message):
+    if message.from_user.id == 522487188:
+        my_collection.update_one({"weather":"false"},{"$set":{"weather":"true"}})
 
 bot.polling()
