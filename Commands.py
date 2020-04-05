@@ -12,7 +12,7 @@ my_database = my_client.Inf
 my_collection = my_database.Inf
 
 markup = types.ReplyKeyboardMarkup()
-markup.row('/streamcraft','/gmail')
+markup.row('/streamcraft','/gmail','/weather')
 
 @bot.message_handler(commands=["start"])
 def start_message(message):
