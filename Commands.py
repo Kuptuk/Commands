@@ -1,6 +1,7 @@
 import telebot
 import pymongo
 import os
+from telebot import types
 
 mm = os.environ.get("Mongo")
 tt = os.environ.get("TOKEN")
@@ -10,11 +11,18 @@ bot = telebot.TeleBot(tt)
 my_database = my_client.Inf
 my_collection = my_database.Inf
 
+markup = types.ReplyKeyboardMarkup()
+markup.row('/streamcraft','/gmail')
+
+@bot.message_handler(commands=["start"])
+def start_message(message):
+    bot.send_message(message.chat.id, '123', reply_markup=markup)
+
 @bot.message_handler(commands=["streamcraft"])
 def streamcraft_message(message):
     if message.from_user.id == 522487188:
         my_collection.update_one({"streamcraft":"false"},{"$set":{"streamcraft":"true"}})
-        
+
 @bot.message_handler(commands=["gmail"])
 def gmail_message(message):
     if message.from_user.id == 522487188:
