@@ -14,5 +14,10 @@ my_collection = my_database.Inf
 def streamcraft_message(message):
     if message.from_user.id == 522487188:
         my_collection.update_one({"streamcraft":"false"},{"$set":{"streamcraft":"true"}})
+        
+@bot.message_handler(commands=["gmail"])
+def gmail_message(message):
+    if message.from_user.id == 522487188:
+        my_collection.update_one({"gmail":"false"},{"$set":{"gmail":"true"}})
 
 bot.polling()
